@@ -20,7 +20,7 @@
 ///                                Finished the control signals
 ///                   
 ///                   Milestone 5: Implemented a clock for the single cycle and pipelined
-///                                Implementzed Pipelining
+///                                Implemented Pipelining
 ///
 ///    Files:          asm_binary holds the different functional blocks as well as an extra class for any extra cross file variables and functions
 ///                    number holds the conversions for floating point as well as type converstions and the addition of the mantissas
