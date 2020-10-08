@@ -2,6 +2,7 @@ This project was a semester long team Project in Computer Organization.
 The goal with this project was to desgn and implement a basic RISC-V processor at a bit level and write a report detailing the design process.
 
 The following was implemented in the project:
+
     - Read a program from a file and execute the instructions in the file.
     - Convert the assembly code from the file into binary and split it up into opcode and registers.
     - Registers for holding data for ALU operations.
@@ -21,7 +22,7 @@ The following was implemented in the project:
     - Control signals for the flow of the pipeline.
     - Branching was implemented but branch prediction was not finished for the final submission.
     
-    The comp_org_class_pipelined folder contains the pipelined version of the project.
-    The comp_org_class_single_cycle folder contains the non-pipelined version of the project.
+The comp_org_class_pipelined folder contains the pipelined version of the project.
+The comp_org_class_single_cycle folder contains the non-pipelined version of the project.
 
      
