@@ -2,22 +2,29 @@
 #define EVENT_H
 
 #include <cstdint>
-#include <tuple>
-#include <string>
 
 #define Tick uint64_t
 
 class Event{
 private:
-    Tick time; // Time that the event was inserted into the MEQ
-    std::tuple<std::string, std::string, std::string> data; // The data for the event, such as: F4, F0, F2
-
+    Tick time; // Time the event is going to be executed
+    bool scheduled; // Boolean for if an event is scheduled or not
 
 public:
-    Event() {};
-    void setTime(Tick t){ time = t; }
+    Event() : time(0), scheduled(0) {}
     Tick getTime() { return time; }
+    void schedule(Tick t){
+        time = t;
+        scheduled = 1;
+    }
+    void deschedule(){
+        time = -1;
+        scheduled = false;
+    }
+    bool isScheduled() { return scheduled; }
     virtual void process() = 0;
+    virtual const char* description() = 0;
+
 };
 
 #endif // EVENT_H
