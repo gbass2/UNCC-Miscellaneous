@@ -1,5 +1,5 @@
 This project was a semester long team Project in Computer Organization.
-The goal with this project was to desgn and implement a basic RISC-V processor at a bit level and write a report detailing the design process.
+The goal with this project was to desgn and implement a basic arm processor at a bit level and write a report detailing the design process.
 
 The following was implemented in the project:
 
