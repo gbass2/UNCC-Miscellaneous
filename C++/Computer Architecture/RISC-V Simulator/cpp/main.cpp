@@ -7,5 +7,7 @@ int main(){
     System *sys = new System();
     CPU *cpu = new CPU(sys);
     cpu->initialize();
-    cpu->runSimulation(10);
+    cpu->runSimulation(11);
+
+    return 0;
 }
