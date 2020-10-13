@@ -8,14 +8,14 @@
 class Event{
 private:
     Tick time; // Time the event is going to be executed
-    bool scheduled; // Boolean for if an event is scheduled or not
+    bool scheduled = false; // Boolean for if an event is scheduled or not
 
 public:
     Event() : time(0), scheduled(0) {}
     Tick getTime() { return time; }
     void schedule(Tick t){
         time = t;
-        scheduled = 1;
+        scheduled = true;
     }
     void deschedule(){
         time = -1;
@@ -23,7 +23,7 @@ public:
     }
     bool isScheduled() { return scheduled; }
     virtual void process() = 0;
-    virtual const char* description() = 0;
+    virtual const char* description() = 0; //
 
 };
 
