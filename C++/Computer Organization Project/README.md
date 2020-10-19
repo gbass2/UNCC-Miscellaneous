@@ -20,7 +20,7 @@ The following was implemented in the project:
       - Write back to the register once the operation is finished.
       
     - Control signals for the flow of the pipeline.
-    - Branching was implemented but branch prediction was not finished for the final submission.
+    - Branching was implemented but branch prediction was not.
     
 The comp_org_class_pipelined folder contains the pipelined version of the project.
 The comp_org_class_single_cycle folder contains the non-pipelined version of the project.
