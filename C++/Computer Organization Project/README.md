@@ -8,7 +8,7 @@ The following was implemented in the project:
     - Registers for holding data for ALU operations.
     - Memory to hold data and are accessed from a load or store.
     - A program counter that points to the nexted instruction to be excuted.
-    - A clock to hold the 
+    - A clock to hold the cycle count
     - An ALU to excute the instructions during the execution stage.
     - The data was stored as single precision floating point.
     - Some operations were done at the bit level.
