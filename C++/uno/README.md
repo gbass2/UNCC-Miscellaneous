@@ -1,1 +1,1 @@
-Designed and coded a terminal based UNO game that implements the base UNO rules.
+Designed and coded a terminal based UNO game that implements the base UNO rules. It implemets creating player's hands, shuffling the deck, managing the players and their deck, and outputing to the terminal.
