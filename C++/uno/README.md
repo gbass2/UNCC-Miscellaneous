@@ -1,1 +1,8 @@
-Designed and coded a terminal based UNO game that implements the base UNO rules. It implemets creating player's hands, shuffling the deck, managing the players and their deck, and rendering the cards to the terminal.
+The project was to implement a terminal based game that implements the base rules and card types from the UNO game. 
+It implemets the following:
+  - Creating player's hands 
+  - Shuffling and managing the deck
+  - Managing the players hands
+  - Handling each turn
+  - Rendering the cards to the terminal.
+  
