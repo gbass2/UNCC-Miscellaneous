@@ -1,7 +1,7 @@
 CC = g++
 CFLAGS = -I. --std=c++11
 OBJS = pretestProb.o
-TARGET = hash
+TARGET = pretest
 
 .PHONY : clean run all
 
