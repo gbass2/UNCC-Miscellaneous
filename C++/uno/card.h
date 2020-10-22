@@ -13,7 +13,7 @@ class GameManager{
     bool drawFour = false;
     int numPlayers = 2;
     int playerTurnIndex = 0;
-    
+
     void setNumPlayers(int);
 };
 
@@ -26,19 +26,19 @@ class Card{
     int number;
     // Color
     ColorType color;
-    
+
     public:
     // Mutators and Accessors:
     void setColor(ColorType);
     void setNumber(int);
     ColorType getColor() const;
     int getNumber() const;
-    
+
     // Virtual function for drawing card
     virtual string render(int);
     // Virtual function for playing card
     virtual bool play(Card, GameManager&);
-    
+
 };
 
 class NumberCard : public Card{
@@ -76,7 +76,7 @@ class ReverseCard : public Card{
 class WildCard : public Card{
     public:
     bool hasColor = false;
-    
+
     // Member functions:
     string render(int);
     bool play(Card, GameManager&);
@@ -85,12 +85,10 @@ class WildCard : public Card{
 class DrawFourCard : public Card{
     public:
     bool hasColor = false;
-    
+
     DrawFourCard();
     string render(int);
     bool play(Card, GameManager&);
 };
 
 #endif
-
-

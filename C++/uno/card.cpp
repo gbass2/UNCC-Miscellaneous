@@ -5,7 +5,7 @@ void GameManager::setNumPlayers(int numPlayers){
         numPlayers = 2;
     else if(numPlayers > 6)
         numPlayers = 6;
-        
+
     this->numPlayers = numPlayers;
 }
 
@@ -57,7 +57,7 @@ string NumberCard::render(int line){
     switch(line){
         case 0: return ".___________.";
         case 1: return "|           |";
-        case 2: 
+        case 2:
             switch(color){
             case RED:
                 return "|    RED    |";
@@ -110,7 +110,7 @@ string SkipCard::render(int line){
     switch(line){
         case 0: return ".___________.";
         case 1: return "|           |";
-        case 2: 
+        case 2:
             switch(color){
             case RED:
                 return "|    RED    |";
@@ -164,7 +164,7 @@ string DrawTwoCard::render(int line){
     switch(line){
         case 0: return ".___________.";
         case 1: return "|           |";
-        case 2: 
+        case 2:
             switch(color){
             case RED:
                 return "|    RED    |";
@@ -219,7 +219,7 @@ string ReverseCard::render(int line){
     switch(line){
         case 0: return ".___________.";
         case 1: return "|           |";
-        case 2: 
+        case 2:
             switch(color){
             case RED:
                 return "|    RED    |";
@@ -271,9 +271,9 @@ string WildCard::render(int line){
     switch(line){
         case 0: return ".___________.";
         case 1: return "|           |";
-        case 2: 
+        case 2:
             // If no color is set, "WILD" will only be displayed
-            if(!hasColor) 
+            if(!hasColor)
                 return "|           |";
             // "WILD" and color will be displayed
             else{
@@ -317,7 +317,7 @@ bool WildCard::play(Card discard, GameManager &gameManager){
         cout << "What color would you like it to be?: ";
         cin >> userInput;
         this->hasColor = true;
-        
+
         // Set color to userInput; Default is  RED
         if(userInput == "red" || userInput ==  "RED")
            setColor(RED);
@@ -349,9 +349,9 @@ string DrawFourCard::render(int line){
     switch(line){
         case 0: return ".___________.";
         case 1: return "|           |";
-        case 2: 
+        case 2:
             // If no color is set, "WILD" will only be displayed
-            if(!hasColor) 
+            if(!hasColor)
                 return "|           |";
             // "WILD" and color will be displayed
             else{
@@ -395,7 +395,7 @@ bool DrawFourCard::play(Card discard, GameManager &gameManager){
             cout << "What color would you like it to be?: ";
             cin >> userInput;
             this->hasColor = true;
-            
+
             // Set color to userInput; Default is RED
             if(userInput == "red" || userInput ==  "RED")
                setColor(RED);

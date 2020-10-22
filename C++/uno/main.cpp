@@ -15,49 +15,49 @@ void buildDeck(vector<Card*> &deck){
             }
         }
     }
-    
+
     // Adds number card 0; 1 of wach color
     for(int i = 0; i < 1; i++){
             for(int c = RED; c <= YELLOW; c++){
                 deck.push_back(new NumberCard((ColorType)c, i));
             }
     }
-    
+
     // Adds skip cards
     for(int i = 0; i < 2; i++){
         for(int c = RED; c <= YELLOW; c++){
             deck.push_back(new SkipCard((ColorType)c));
         }
     }
-    
+
     // Adds Draw 2 cards
     for(int i = 0; i < 2; i++){
         for(int c = RED; c <= YELLOW; c++){
             deck.push_back(new DrawTwoCard((ColorType)c));
         }
     }
-    
+
     // Adds reverse cards
     for(int i = 0; i < 2; i++){
         for(int c = RED; c <= YELLOW; c++){
             deck.push_back(new ReverseCard((ColorType)c));
         }
     }
-    
+
     // Adds wild cards
     for(int i = 0; i < 1; i++){
             for(int c = RED; c <= YELLOW; c++){
                 deck.push_back(new WildCard);
             }
     }
-    
+
     // Adds Draw 4 cards
     for(int i = 0; i < 1; i++){
         for(int c = RED; c <= YELLOW; c++){
             deck.push_back(new DrawFourCard);
         }
     }
-    
+
 }
 
 void drawCards(vector<Card*> &deck, vector<Card*> &hand, int numCards){
@@ -91,7 +91,7 @@ void reshuffle(vector<Card*> &deck, vector<Card*> &discard){
 }
 
 // Creates hands for n number of players
-void createHands(vector<Card*> &deck, vector<vector<Card*>> &hands){
+void createHands(vector<Card*> &deck, vector<vector<Card*> > &hands){
     for(int i = 0; i < hands.size(); i++){
         drawCards(deck, hands.at(i), 7);
     }
@@ -118,21 +118,21 @@ void renderDiscard(vector<Card*> discard){
     }
 }
 
-void takeTurn(vector<Card*> &deck, vector<vector<Card*>> &hands, vector<Card*> &discard, GameManager &gameManager){
+void takeTurn(vector<Card*> &deck, vector<vector<Card*> > &hands, vector<Card*> &discard, GameManager &gameManager){
     // Print player's turn (GameManger's repsonsiblity)
     cout << "\nPlayer " << gameManager.playerTurnIndex + 1 << "'s turn" << endl;
     int playerChoice;
-    
+
     // Do I need to draw cards? (Draw 2 played last)
     if(gameManager.drawTwo){
         drawCards(deck, hands.at(gameManager.playerTurnIndex), 2);
     }
-    
+
     // Do I need to draw cards? (Draw 4 played last)
     if(gameManager.drawFour){
         drawCards(deck, hands.at(gameManager.playerTurnIndex), 4);
     }
-        
+
     // Do I need to skip this player's turn
     if(!gameManager.skipTurn){
         // if false:
@@ -142,7 +142,7 @@ void takeTurn(vector<Card*> &deck, vector<vector<Card*>> &hands, vector<Card*> &
         cout << "Which card would you like to play? (0 - ";
         cout << hands.at(gameManager.playerTurnIndex).size() - 1 << "): ";
         cin >> playerChoice;
-        
+
         // Check for valid input
         while(playerChoice < 0 || playerChoice > hands.at(gameManager.playerTurnIndex).size() - 1){
             cout << "Invalid card. ";
@@ -150,7 +150,7 @@ void takeTurn(vector<Card*> &deck, vector<vector<Card*>> &hands, vector<Card*> &
             cout << hands.at(gameManager.playerTurnIndex).size() - 1 << "): " << endl;
             cin >> playerChoice;
         }
-            
+
         if(hands.at(gameManager.playerTurnIndex).at(playerChoice)->play(*discard.at(discard.size() -1), gameManager)){
             // Is selected card valid?
             // if true:
@@ -158,11 +158,13 @@ void takeTurn(vector<Card*> &deck, vector<vector<Card*>> &hands, vector<Card*> &
             Card* temp = hands.at(gameManager.playerTurnIndex).at(playerChoice);
             hands.at(gameManager.playerTurnIndex).erase(hands.at(gameManager.playerTurnIndex).begin() + playerChoice);
             discard.push_back(temp);
-        } else {     
+            std::system("clear");
+        } else {
             // if false:
                 //draw card
             drawCards(deck, hands.at(gameManager.playerTurnIndex), 1);
-        } 
+            std::system("clear");
+        }
     } else {
         // if true:
             // reset game manager (draw2, draw4, and skip = false)
@@ -170,9 +172,9 @@ void takeTurn(vector<Card*> &deck, vector<vector<Card*>> &hands, vector<Card*> &
         gameManager.drawFour = false;
         gameManager.skipTurn = false;
     }
-    
+
     // Get next player index (use game manager info to determine)
-    if(!gameManager.reverse){     
+    if(!gameManager.reverse){
         gameManager.playerTurnIndex++;
         if(gameManager.playerTurnIndex >= gameManager.numPlayers)
             gameManager.playerTurnIndex = 0;
@@ -182,13 +184,13 @@ void takeTurn(vector<Card*> &deck, vector<vector<Card*>> &hands, vector<Card*> &
     if(gameManager.playerTurnIndex < 0)
         gameManager.playerTurnIndex = gameManager.numPlayers - 1;
     }
-    
+
 }
 
-bool hasWon(vector<vector<Card*>> hands, GameManager& gameManager){
+bool hasWon(vector<vector<Card*> > hands, GameManager& gameManager){
     for(int i = 0; i < hands.size(); i++){
         if((hands.at(i)).size() == 0){
-            cout << "\nCongratulations! Player " << gameManager.playerTurnIndex + 1 << " has Won!" << endl; 
+            cout << "\nCongratulations! Player " << gameManager.playerTurnIndex + 1 << " has Won!" << endl;
             return true;
         }
     }
@@ -200,29 +202,29 @@ int main(){
     cout << "How many are playing (max of 6): ";
     int players;
     cin >> players;
-    
+
     //Check to see if the number of players is between 2 and 6 and setting the number to numPlayers
     while(players < 2 || players > 6){
         cout << "Invalid number of players. Please re-enter the numbre of players: ";
         cin >> players;
     }
-    
+
     GameManager gameManager;
     gameManager.setNumPlayers(players);
-    
+
     vector<Card*> deck;
     vector<Card*> discard;
-    vector<vector<Card*>> hands(gameManager.numPlayers);
-    
+    vector<vector<Card*> > hands(gameManager.numPlayers);
+
     // Builds the deck
     buildDeck(deck);
-    
+
     // Shuffles the deck
     scramble(deck);
-    
+
     // Creates the first discard card
     drawCards(deck, discard, 1);
-    
+
     // Creates hands for n number of players
     createHands(deck, hands);
 
@@ -233,6 +235,6 @@ int main(){
 
         takeTurn(deck, hands, discard, gameManager);
     }
-    
+
     return 0;
 }
