@@ -5,4 +5,6 @@ It implemets the following:
   - Managing the players hands
   - Handling each turn
   - Rendering the cards to the terminal.
+
+![](UNO.gif)
   
